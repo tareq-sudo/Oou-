@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -46,7 +35,7 @@ body.light{
 body.light .display-card{background:rgba(255,255,255,0.8);}
 body.light .picker-dropdown{background:#e8f5ef;}
 body.light .picker-item:hover{background:rgba(46,204,138,0.1);}
-body.light .total-stats,body.light .speed-card,body.light .repeat-card{background:rgba(255,255,255,0.7);}
+body.light .total-stats,body.light .speed-card,body.light .repeat-card,body.light .settings-card{background:rgba(255,255,255,0.7);}
 
 @keyframes wordIn{from{opacity:0;transform:scale(0.8) translateY(10px);filter:blur(6px);}to{opacity:1;transform:scale(1) translateY(0);filter:blur(0);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
@@ -55,9 +44,7 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 @keyframes spin{to{transform:rotate(360deg);}}
 @keyframes splashOut{0%{opacity:1;transform:scale(1);}100%{opacity:0;transform:scale(1.05);}}
 @keyframes confetti{0%{transform:translateY(0) rotate(0);opacity:1;}100%{transform:translateY(80px) rotate(360deg);opacity:0;}}
-@keyframes slideIn{from{transform:translateX(60px);opacity:0;}to{transform:translateX(0);opacity:1;}}
 
-/* ── Splash ── */
 #splash{
   position:fixed;inset:0;z-index:9999;
   background:radial-gradient(ellipse at center,#0d2018,#030805);
@@ -70,43 +57,21 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 .splash-bar{width:160px;height:3px;background:rgba(46,204,138,0.15);border-radius:2px;overflow:hidden;margin-top:8px;animation:fadeUp 0.6s ease 0.9s both;}
 .splash-fill{height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;width:0%;transition:width 0.4s ease;}
 
-/* ── Toast ── */
 #toast{
   position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
   background:rgba(46,204,138,0.15);border:1px solid var(--border);
   backdrop-filter:blur(10px);color:var(--accent);
   padding:10px 20px;border-radius:24px;font-size:14px;
-  opacity:0;transition:all 0.3s ease;z-index:8000;white-space:nowrap;
-  pointer-events:none;
+  opacity:0;transition:all 0.3s ease;z-index:8000;white-space:nowrap;pointer-events:none;
 }
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-/* ── Confetti ── */
-.confetti-piece{
-  position:fixed;width:8px;height:8px;border-radius:2px;
-  animation:confetti 1s ease forwards;pointer-events:none;z-index:7000;
-}
-
-/* ── Done overlay ── */
-#done-overlay{
-  position:fixed;inset:0;z-index:6000;
-  background:rgba(3,8,5,0.92);backdrop-filter:blur(6px);
-  display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;
-  animation:fadeIn 0.4s ease;
-}
-#done-overlay.show{display:flex;}
-.done-emoji{font-size:60px;animation:fadeUp 0.5s ease 0.1s both;}
-.done-title{font-size:24px;font-weight:700;color:var(--accent);animation:fadeUp 0.5s ease 0.2s both;}
-.done-sub{font-size:14px;color:var(--text-dim);text-align:center;animation:fadeUp 0.5s ease 0.3s both;max-width:260px;line-height:1.7;}
-.done-btns{display:flex;gap:10px;margin-top:8px;animation:fadeUp 0.5s ease 0.4s both;}
-.done-btn{padding:12px 24px;border-radius:12px;border:1px solid var(--border);background:var(--accent-dim);color:var(--accent);cursor:pointer;font-family:inherit;font-size:14px;transition:all 0.2s;}
-.done-btn.primary{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;border:none;}
+.confetti-piece{position:fixed;width:8px;height:8px;border-radius:2px;animation:confetti 1s ease forwards;pointer-events:none;z-index:7000;}
 
 .bg-glow{position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(46,204,138,0.06) 0%,transparent 70%);pointer-events:none;z-index:0;}
 
 .wrap{width:100%;max-width:480px;padding:20px 14px 0;display:flex;flex-direction:column;gap:12px;position:relative;z-index:1;}
 
-/* ── Header ── */
 .header{display:flex;align-items:center;justify-content:space-between;}
 .header-right{display:flex;align-items:center;gap:10px;}
 .header-title{font-size:20px;font-weight:700;color:var(--accent);text-shadow:0 0 30px rgba(46,204,138,0.4);}
@@ -114,19 +79,16 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 .icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s;}
 .icon-btn:hover{border-color:var(--accent);color:var(--accent);}
 
-/* ── Khatma progress bar ── */
 .khatma-bar-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 14px;}
 .khatma-bar-top{display:flex;justify-content:space-between;font-size:11px;color:var(--text-dim);margin-bottom:7px;font-family:sans-serif;}
 .khatma-bar-top span:first-child{color:var(--accent);}
 .khatma-bg{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;}
 .khatma-fill{height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:3px;transition:width 0.5s ease;box-shadow:0 0 10px rgba(46,204,138,0.4);}
 
-/* ── Tabs ── */
 .tabs{display:flex;gap:6px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:4px;}
 .tab{flex:1;padding:8px;border:none;background:transparent;color:var(--text-dim);cursor:pointer;font-family:inherit;font-size:13px;border-radius:9px;transition:all 0.2s;}
 .tab.active{background:var(--accent-dim);color:var(--accent);border:1px solid rgba(46,204,138,0.3);}
 
-/* ── Picker ── */
 .picker-wrap{position:relative;}
 .picker-btn{width:100%;padding:12px 14px;background:var(--card);border:1px solid var(--border);border-radius:14px;color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:16px;font-family:inherit;transition:border 0.2s;}
 .picker-btn.open{border-color:var(--accent);}
@@ -141,18 +103,15 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 .picker-item{padding:10px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:14px;border-bottom:1px solid rgba(46,204,138,0.05);transition:background 0.1s;}
 .picker-item:hover{background:rgba(46,204,138,0.07);}
 .picker-item.active{background:rgba(46,204,138,0.1);color:var(--accent);}
-.picker-item.bookmarked::after{content:'🔖';font-size:10px;margin-right:4px;}
 .picker-num{color:var(--text-dim);font-size:11px;font-family:sans-serif;min-width:22px;}
 .picker-meta{color:var(--text-dim);font-size:11px;}
 
-/* ── Juz ── */
 .juz-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;padding:10px;}
 .juz-btn{padding:7px 2px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--text-dim);cursor:pointer;font-size:12px;font-family:sans-serif;transition:all 0.15s;text-align:center;}
 .juz-btn:hover{border-color:var(--accent);color:var(--accent);}
 .juz-btn.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
 
-/* ── Display card ── */
-.display-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:border-color 0.4s;touch-action:pan-y;}
+.display-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:border-color 0.4s;}
 .display-card.playing{animation:glow 2.5s ease-in-out infinite;border-color:rgba(46,204,138,0.35);}
 .display-top{padding:12px 14px 0;display:flex;justify-content:space-between;align-items:center;}
 .display-meta{font-size:11px;color:rgba(255,255,255,0.2);font-family:sans-serif;}
@@ -160,30 +119,28 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 .surah-title-bar{text-align:center;padding:6px 14px 0;font-size:13px;color:rgba(46,204,138,0.4);letter-spacing:1px;}
 
 .stage{height:170px;display:flex;align-items:center;justify-content:center;position:relative;}
-.focus-line{position:absolute;right:20px;left:20px;height:1px;background:linear-gradient(90deg,transparent,rgba(46,204,138,0.18),transparent);}
 .word-text{font-family:'Amiri Quran','Amiri',serif;font-weight:700;line-height:1.5;text-align:center;padding:0 14px;animation:wordIn 0.18s cubic-bezier(0.16,1,0.3,1) both;}
 .focus-char{color:var(--accent);text-shadow:0 0 20px rgba(46,204,138,0.7);}
+.done-msg{text-align:center;animation:fadeUp 0.4s ease;}
 .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:170px;gap:10px;color:var(--text-dim);font-size:13px;}
 .spinner{width:28px;height:28px;border-radius:50%;border:2px solid rgba(46,204,138,0.15);border-top-color:var(--accent);animation:spin 0.8s linear infinite;}
+
+.repeat-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:rgba(46,204,138,0.7);background:rgba(46,204,138,0.08);padding:3px 10px;border-radius:20px;border:1px solid rgba(46,204,138,0.15);}
 
 .card-actions{display:flex;justify-content:flex-end;gap:8px;padding:0 14px 4px;}
 .card-action-btn{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
 .card-action-btn:hover{border-color:var(--accent);color:var(--accent);}
-
-.repeat-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:rgba(46,204,138,0.7);background:rgba(46,204,138,0.08);padding:3px 10px;border-radius:20px;border:1px solid rgba(46,204,138,0.15);}
 
 .progress-wrap{padding:4px 14px 12px;}
 .progress-bg{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;transition:width 0.25s ease;box-shadow:0 0 8px rgba(46,204,138,0.4);}
 .progress-labels{display:flex;justify-content:space-between;margin-top:5px;font-size:10px;color:rgba(255,255,255,0.2);font-family:sans-serif;}
 
-/* ── Time info strip ── */
 .time-strip{display:flex;justify-content:space-around;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px;}
 .time-item{text-align:center;}
 .time-val{font-size:16px;font-weight:700;color:var(--accent);font-family:sans-serif;}
 .time-label{font-size:10px;color:var(--text-dim);margin-top:2px;}
 
-/* ── Controls ── */
 .controls{display:flex;align-items:center;justify-content:center;gap:10px;}
 .ctrl-btn{border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,0.05);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;font-family:inherit;}
 .ctrl-btn:hover{opacity:0.75;transform:scale(0.93);}
@@ -192,7 +149,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 .ctrl-btn.lg{width:64px;height:64px;font-size:22px;background:linear-gradient(135deg,var(--accent2),var(--accent));border-color:var(--accent);color:#fff;}
 .kbd-hint{text-align:center;font-size:10px;color:rgba(255,255,255,0.1);font-family:sans-serif;}
 
-/* ── Speed ── */
 .speed-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:13px;}
 .speed-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
 .speed-num{color:var(--accent);font-weight:700;font-size:22px;font-family:sans-serif;}
@@ -202,7 +158,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 .spd-btn{flex:1;padding:8px 0;border-radius:10px;font-size:12px;border:1px solid var(--border);background:transparent;color:rgba(255,255,255,0.4);cursor:pointer;font-family:inherit;transition:all 0.15s;}
 .spd-btn.active{border-color:var(--accent);background:var(--accent-dim);color:var(--accent);}
 
-/* ── Settings panel ── */
 .settings-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:13px;display:flex;flex-direction:column;gap:12px;}
 .settings-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;}
 .settings-label{color:var(--text-dim);}
@@ -215,7 +170,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 .toggle.on::after{left:21px;}
 .toggle.off::after{left:3px;}
 
-/* ── Repeat ── */
 .repeat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:13px;}
 .repeat-title{font-size:13px;color:var(--text-dim);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;}
 .repeat-controls{display:flex;align-items:center;gap:10px;margin-top:8px;}
@@ -224,7 +178,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 .rep-btn{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
 .rep-val{color:var(--accent);font-weight:700;font-size:18px;font-family:sans-serif;min-width:28px;text-align:center;}
 
-/* ── Bookmarks ── */
 .bookmarks-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:13px;}
 .bookmarks-title{font-size:13px;color:var(--text-dim);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;}
 .bookmark-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(46,204,138,0.06);font-size:13px;cursor:pointer;transition:color 0.15s;}
@@ -233,7 +186,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 .bookmark-del{color:rgba(255,100,100,0.5);cursor:pointer;font-size:12px;padding:4px;}
 .no-bookmarks{text-align:center;color:var(--text-dim);font-size:12px;padding:10px 0;}
 
-/* ── Stats ── */
 .stats{display:flex;gap:8px;}
 .stat-card{flex:1;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 6px;text-align:center;}
 .stat-icon{font-size:14px;margin-bottom:4px;}
@@ -245,13 +197,11 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 .total-label{color:var(--text-dim);}
 .total-val{color:var(--accent);font-weight:700;font-family:sans-serif;}
 .divider{height:1px;background:var(--border);}
-
 .error-msg{text-align:center;padding:20px;color:rgba(255,100,100,0.7);font-size:13px;line-height:1.8;}
 </style>
 </head>
 <body>
 
-<!-- Splash -->
 <div id="splash">
   <div class="splash-icon">📖</div>
   <div class="splash-title">قارئ القرآن الكريم</div>
@@ -259,34 +209,19 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
   <div class="splash-bar"><div class="splash-fill" id="splash-fill"></div></div>
 </div>
 
-<!-- Done overlay -->
-<div id="done-overlay">
-  <div class="done-emoji">🌟</div>
-  <div class="done-title" id="done-title">أتممت السورة</div>
-  <div class="done-sub" id="done-sub">بارك الله فيك وجعلها في ميزان حسناتك</div>
-  <div class="done-btns">
-    <button class="done-btn" onclick="closeDone()">إغلاق</button>
-    <button class="done-btn primary" onclick="nextSurah()">السورة التالية ←</button>
-  </div>
-</div>
-
-<!-- Toast -->
 <div id="toast"></div>
-
 <div class="bg-glow"></div>
 <div class="wrap">
 
-  <!-- Header -->
   <div class="header">
     <div class="header-right">
-      <button class="icon-btn" onclick="toggleLight()" id="theme-btn" title="وضع النهار">☀️</button>
-      <button class="icon-btn" onclick="toggleWakeLock()" id="wake-btn" title="منع إطفاء الشاشة">🔆</button>
+      <button class="icon-btn" onclick="toggleLight()" id="theme-btn">☀️</button>
+      <button class="icon-btn" onclick="toggleWakeLock()" id="wake-btn" style="opacity:0.4">🔆</button>
     </div>
     <span class="header-title">قارئ القرآن الكريم</span>
     <span class="header-label">RSVP</span>
   </div>
 
-  <!-- Khatma overall progress -->
   <div class="khatma-bar-wrap">
     <div class="khatma-bar-top">
       <span id="khatma-pct">تقدم الختمة: 0%</span>
@@ -295,14 +230,12 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
     <div class="khatma-bg"><div class="khatma-fill" id="khatma-fill" style="width:0%"></div></div>
   </div>
 
-  <!-- Tabs -->
   <div class="tabs">
     <button class="tab active" onclick="switchTab('surah',this)">السور</button>
     <button class="tab" onclick="switchTab('juz',this)">الأجزاء</button>
     <button class="tab" onclick="switchTab('bookmarks',this)">🔖</button>
   </div>
 
-  <!-- Surah Picker -->
   <div id="tab-surah">
     <div class="picker-wrap">
       <button class="picker-btn" id="picker-btn" onclick="togglePicker()">
@@ -317,14 +250,12 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
     </div>
   </div>
 
-  <!-- Juz Picker -->
   <div id="tab-juz" style="display:none">
     <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
       <div class="juz-grid" id="juz-grid"></div>
     </div>
   </div>
 
-  <!-- Bookmarks tab -->
   <div id="tab-bookmarks" style="display:none">
     <div class="bookmarks-card">
       <div class="bookmarks-title">
@@ -335,7 +266,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
     </div>
   </div>
 
-  <!-- Word Display -->
   <div class="display-card" id="display-card">
     <div class="display-top">
       <span class="display-meta" id="word-count">- / -</span>
@@ -344,17 +274,15 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
     </div>
     <div class="surah-title-bar" id="surah-title-bar"></div>
     <div class="stage" id="swipe-stage">
-      <div class="focus-line" style="top:calc(50% - 34px)"></div>
-      <div class="focus-line" style="top:calc(50% + 34px)"></div>
       <div id="word-stage">
         <div class="loading"><div class="spinner"></div><span>جاري تحميل القرآن الكريم...</span></div>
       </div>
     </div>
     <div style="text-align:center;padding:0 14px 4px;min-height:22px;" id="repeat-indicator"></div>
     <div class="card-actions">
-      <button class="card-action-btn" onclick="copyAyah()" title="نسخ الآية">📋</button>
-      <button class="card-action-btn" onclick="shareAyah()" title="مشاركة الآية">↗️</button>
-      <button class="card-action-btn" onclick="addBookmark()" title="إضافة علامة">🔖</button>
+      <button class="card-action-btn" onclick="copyAyah()" title="نسخ">📋</button>
+      <button class="card-action-btn" onclick="shareAyah()" title="مشاركة">↗️</button>
+      <button class="card-action-btn" onclick="addBookmark()" title="علامة">🔖</button>
     </div>
     <div class="progress-wrap">
       <div class="progress-bg"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
@@ -362,27 +290,13 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
     </div>
   </div>
 
-  <!-- Time strip -->
   <div class="time-strip">
-    <div class="time-item">
-      <div class="time-val" id="t-elapsed">0:00</div>
-      <div class="time-label">الجلسة</div>
-    </div>
-    <div class="time-item">
-      <div class="time-val" id="t-surah-rem">0:00</div>
-      <div class="time-label">باقي السورة</div>
-    </div>
-    <div class="time-item">
-      <div class="time-val" id="t-khatma-rem">-</div>
-      <div class="time-label">باقي الختمة</div>
-    </div>
-    <div class="time-item">
-      <div class="time-val" id="t-khatma-full">-</div>
-      <div class="time-label">وقت الختمة</div>
-    </div>
+    <div class="time-item"><div class="time-val" id="t-elapsed">0:00</div><div class="time-label">الجلسة</div></div>
+    <div class="time-item"><div class="time-val" id="t-surah-rem">0:00</div><div class="time-label">باقي السورة</div></div>
+    <div class="time-item"><div class="time-val" id="t-khatma-rem">-</div><div class="time-label">باقي الختمة</div></div>
+    <div class="time-item"><div class="time-val" id="t-khatma-full">-</div><div class="time-label">وقت الختمة</div></div>
   </div>
 
-  <!-- Controls -->
   <div class="controls">
     <button class="ctrl-btn sm" onclick="stepAyah(-1)">⏮</button>
     <button class="ctrl-btn sm" onclick="stepWord(-10)"><span style="font-size:11px;font-family:sans-serif">-10</span></button>
@@ -392,7 +306,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
   </div>
   <div class="kbd-hint">مسافة = تشغيل/إيقاف &nbsp;|&nbsp; ← → = كلمة &nbsp;|&nbsp; ↑ ↓ = آية</div>
 
-  <!-- Speed -->
   <div class="speed-card">
     <div class="speed-top">
       <button class="adj-btn" onclick="adjustWpm(-10)">−</button>
@@ -402,7 +315,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
     <div class="speed-btns" id="speed-btns"></div>
   </div>
 
-  <!-- Settings -->
   <div class="settings-card">
     <div class="settings-row">
       <span class="settings-label">📐 حجم الخط</span>
@@ -418,7 +330,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
     </div>
   </div>
 
-  <!-- Repeat -->
   <div class="repeat-card">
     <div class="repeat-title">
       <span>🔁 تكرار الآيات للحفظ</span>
@@ -436,7 +347,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
     </div>
   </div>
 
-  <!-- Stats -->
   <div class="stats">
     <div class="stat-card"><div class="stat-icon">📖</div><div class="stat-val" id="stat-words">0</div><div class="stat-label">كلمات</div></div>
     <div class="stat-card"><div class="stat-icon">⏱</div><div class="stat-val" id="stat-time">0:00</div><div class="stat-label">الجلسة</div></div>
@@ -444,7 +354,6 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
     <div class="stat-card"><div class="stat-icon">✨</div><div class="stat-val" id="stat-khatma">0</div><div class="stat-label">ختمات</div></div>
   </div>
 
-  <!-- Total stats -->
   <div class="total-stats">
     <div class="total-row"><span class="total-label">⏳ وقت القراءة الكلي</span><span class="total-val" id="total-time">0:00</span></div>
     <div class="divider"></div>
@@ -456,73 +365,39 @@ body.light .total-stats,body.light .speed-card,body.light .repeat-card{backgroun
 </div>
 
 <script>
-// ══════════════════════════════════
-// Constants
-// ══════════════════════════════════
 const SPEEDS=[{label:"أبطأ",wpm:60},{label:"بطيء",wpm:120},{label:"متوسط",wpm:200},{label:"سريع",wpm:350},{label:"أسرع",wpm:500}];
 const QURAN_TOTAL_WORDS=77430;
 const JUZ_STARTS=[[1,1],[2,142],[2,253],[3,93],[4,24],[4,148],[5,82],[6,111],[7,88],[8,41],[9,93],[11,6],[12,53],[15,1],[17,1],[18,75],[21,1],[23,1],[25,21],[27,56],[29,46],[33,31],[36,28],[39,32],[41,47],[46,1],[51,31],[58,1],[67,1],[78,1]];
-const DONE_MSGS=[
-  "بارك الله فيك وجعلها في ميزان حسناتك 🌿",
-  "ما شاء الله، أتممت السورة بتوفيق من الله 💚",
-  "جزاك الله خيراً، استمر في رحلتك مع القرآن ✨",
-  "اللهم اجعلنا من أهل القرآن الذين هم أهله وخاصته 🌟",
-];
 
-// ══════════════════════════════════
-// State
-// ══════════════════════════════════
 let surahList=[],currentSurahIdx=0,wordList=[],wordIdx=0;
 let playing=false,wpm=120,speedIdx=1,elapsed=0,wordsRead=0,done=false;
 let playInterval=null,timerInterval=null,pickerOpen=false,loading=false;
 let repeatEnabled=false,repeatCount=3,currentRepeat=1;
 let totalElapsed=0,totalWords=0,khatmaCount=0;
 let focusEnabled=true,fontSize=66,lightMode=false;
-let bookmarks=[],totalWordsRead=0;
+let bookmarks=[],wordsReadGlobal=0;
 let wakeLock=null,wakeLockActive=false;
 let touchStartX=0,touchStartY=0;
-let wordsReadGlobal=0; // for khatma progress
 
-// ══════════════════════════════════
-// Storage
-// ══════════════════════════════════
 function save(){
-  try{
-    localStorage.setItem('qpro',JSON.stringify({
-      surahIdx:currentSurahIdx,wordIdx,
-      totalElapsed,totalWords,khatmaCount,
-      bookmarks,wordsReadGlobal,
-      lastRead:new Date().toLocaleDateString('ar'),
-      fontSize,speedIdx,wpm,
-    }));
-  }catch(e){}
+  try{localStorage.setItem('qpro',JSON.stringify({surahIdx:currentSurahIdx,wordIdx,totalElapsed,totalWords,khatmaCount,bookmarks,wordsReadGlobal,lastRead:new Date().toLocaleDateString('ar'),fontSize,speedIdx,wpm}));}catch(e){}
 }
-function load(){
-  try{return JSON.parse(localStorage.getItem('qpro')||'{}');}catch(e){return{};}
-}
+function load(){try{return JSON.parse(localStorage.getItem('qpro')||'{}');}catch(e){return{};}}
 
-// ══════════════════════════════════
-// Splash
-// ══════════════════════════════════
 function initSplash(){
   const fill=document.getElementById('splash-fill');
   let p=0;
   const iv=setInterval(()=>{
-    p+=Math.random()*15+5;
-    if(p>100)p=100;
+    p+=Math.random()*15+5;if(p>100)p=100;
     fill.style.width=p+'%';
     if(p>=100){clearInterval(iv);setTimeout(hideSplash,300);}
   },120);
 }
 function hideSplash(){
   const s=document.getElementById('splash');
-  s.classList.add('hide');
-  setTimeout(()=>s.remove(),600);
+  s.classList.add('hide');setTimeout(()=>s.remove(),600);
 }
 
-// ══════════════════════════════════
-// Toast
-// ══════════════════════════════════
 let toastTimer=null;
 function showToast(msg){
   const t=document.getElementById('toast');
@@ -531,23 +406,6 @@ function showToast(msg){
   toastTimer=setTimeout(()=>t.classList.remove('show'),2500);
 }
 
-// ══════════════════════════════════
-// Confetti
-// ══════════════════════════════════
-function showConfetti(){
-  const colors=['#2ECC8A','#27AE74','#FFD700','#fff','#a8edca'];
-  for(let i=0;i<18;i++){
-    const el=document.createElement('div');
-    el.className='confetti-piece';
-    el.style.cssText=`left:${20+Math.random()*60}%;top:${10+Math.random()*30}%;background:${colors[Math.floor(Math.random()*colors.length)]};animation-delay:${Math.random()*0.4}s;animation-duration:${0.8+Math.random()*0.6}s;`;
-    document.body.appendChild(el);
-    setTimeout(()=>el.remove(),1500);
-  }
-}
-
-// ══════════════════════════════════
-// Wake Lock
-// ══════════════════════════════════
 async function toggleWakeLock(){
   if(wakeLockActive){
     if(wakeLock){await wakeLock.release();wakeLock=null;}
@@ -564,18 +422,12 @@ async function toggleWakeLock(){
   }
 }
 
-// ══════════════════════════════════
-// Theme
-// ══════════════════════════════════
 function toggleLight(){
   lightMode=!lightMode;
   document.body.classList.toggle('light',lightMode);
   document.getElementById('theme-btn').textContent=lightMode?'🌙':'☀️';
 }
 
-// ══════════════════════════════════
-// API
-// ══════════════════════════════════
 async function fetchSurahList(){
   try{
     const r=await fetch('https://api.alquran.cloud/v1/surah');
@@ -587,7 +439,7 @@ async function fetchSurahList(){
     if(sv.khatmaCount)khatmaCount=sv.khatmaCount;
     if(sv.bookmarks)bookmarks=sv.bookmarks;
     if(sv.wordsReadGlobal)wordsReadGlobal=sv.wordsReadGlobal;
-    if(sv.fontSize){fontSize=sv.fontSize;document.documentElement.style.setProperty('--font-size',fontSize+'px');document.getElementById('font-val').textContent=fontSize;}
+    if(sv.fontSize){fontSize=sv.fontSize;document.getElementById('font-val').textContent=fontSize;}
     if(sv.speedIdx!==undefined){speedIdx=sv.speedIdx;wpm=sv.wpm||120;document.getElementById('wpm-display').textContent=wpm;buildSpeedBtns();}
     if(sv.lastRead)document.getElementById('last-read').textContent=sv.lastRead;
     buildBookmarksList();
@@ -603,9 +455,6 @@ async function fetchAyahs(n){
   return d.data.ayahs.map(a=>({text:a.text,number:a.numberInSurah}));
 }
 
-// ══════════════════════════════════
-// Word list
-// ══════════════════════════════════
 function buildWordList(ayahs,hasBismillah){
   const res=[];
   if(hasBismillah){
@@ -634,13 +483,11 @@ function formatTime(s){
   return`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
 }
 
-// ══════════════════════════════════
-// Render
-// ══════════════════════════════════
 function renderWord(){
   const stage=document.getElementById('word-stage');
   if(loading){stage.innerHTML='<div class="loading"><div class="spinner"></div><span>جاري التحميل...</span></div>';return;}
   if(!wordList.length)return;
+  if(done){stage.innerHTML='<div class="done-msg"><div style="font-size:30px;margin-bottom:8px">✅</div><div style="color:var(--accent);font-size:18px;font-weight:700">أتممت السورة</div></div>';return;}
   const e=wordList[wordIdx];
   const len=e.word.length;
   const size=fontSize>50?(len>10?Math.round(fontSize*0.6):len>6?Math.round(fontSize*0.78):fontSize):fontSize;
@@ -669,39 +516,26 @@ function updateUI(){
   document.getElementById('progress-fill').style.width=prog+'%';
   document.getElementById('prog-left').textContent=Math.round(prog)+'%';
   document.getElementById('prog-right').textContent=`${wordIdx+1} / ${wordList.length}`;
-
-  // time strip
   document.getElementById('t-elapsed').textContent=formatTime(elapsed);
   document.getElementById('t-surah-rem').textContent=formatTime(surahRem);
   document.getElementById('t-khatma-rem').textContent=formatTime(khatmaRem);
   document.getElementById('t-khatma-full').textContent=formatTime(Math.round(QURAN_TOTAL_WORDS/wpm*60));
-
-  // header elapsed
   document.getElementById('stat-words').textContent=wordsRead.toLocaleString('ar');
   document.getElementById('stat-time').textContent=formatTime(elapsed);
   document.getElementById('stat-ayah').textContent=e.isBismillah?'﷽':e.ayahNumber;
   document.getElementById('stat-khatma').textContent=khatmaCount;
   document.getElementById('total-time').textContent=formatTime(totalElapsed);
   document.getElementById('total-words').textContent=totalWords.toLocaleString('ar');
-
-  // khatma bar
   document.getElementById('khatma-fill').style.width=khatmaPct+'%';
   document.getElementById('khatma-pct').textContent=`تقدم الختمة: ${khatmaPct}%`;
   document.getElementById('khatma-count-top').textContent=`${khatmaCount} ختمة`;
-
   document.getElementById('display-card').className='display-card'+(playing?' playing':'');
   document.getElementById('play-btn').textContent=playing?'⏸':'▶';
-
   const ri=document.getElementById('repeat-indicator');
-  ri.innerHTML=repeatEnabled?`<span class="repeat-badge">🔁 تكرار ${currentRepeat} / ${repeatCount}</span>`:'';
-
-  renderWord();
-  save();
+  ri.innerHTML=repeatEnabled&&!done?`<span class="repeat-badge">🔁 تكرار ${currentRepeat} / ${repeatCount}</span>`:'';
+  renderWord();save();
 }
 
-// ══════════════════════════════════
-// Load surah
-// ══════════════════════════════════
 async function loadSurah(idx,startWord=0){
   stopPlay();currentSurahIdx=idx;
   wordIdx=startWord;elapsed=0;wordsRead=0;done=false;currentRepeat=1;
@@ -710,7 +544,7 @@ async function loadSurah(idx,startWord=0){
   document.getElementById('surah-num').textContent=s.number;
   document.getElementById('surah-name').textContent='سورة '+s.name;
   document.getElementById('surah-title-bar').textContent='سورة '+s.name;
-  document.querySelectorAll('.picker-item').forEach((el,i)=>el.className='picker-item'+(i===idx?' active':'')+(bookmarks.find(b=>b.surahIdx===i)?' bookmarked':''));
+  document.querySelectorAll('.picker-item').forEach((el,i)=>el.className='picker-item'+(i===idx?' active':''));
   try{
     const ayahs=await fetchAyahs(s.number);
     wordList=buildWordList(ayahs,s.number!==1&&s.number!==9);
@@ -719,35 +553,10 @@ async function loadSurah(idx,startWord=0){
     updateUI();
   }catch(e){
     loading=false;
-    document.getElementById('word-stage').innerHTML='<div class="error-msg">⚠️ فشل تحميل السورة<br><small>تحقق من الاتصال</small></div>';
+    document.getElementById('word-stage').innerHTML='<div class="error-msg">⚠️ فشل تحميل السورة</div>';
   }
 }
 
-function nextSurah(){
-  closeDone();
-  if(currentSurahIdx<surahList.length-1)loadSurah(currentSurahIdx+1);
-}
-
-// ══════════════════════════════════
-// Done
-// ══════════════════════════════════
-function showDone(){
-  const isFullKhatma=currentSurahIdx===surahList.length-1;
-  const title=isFullKhatma?'🎉 أتممت ختمة القرآن الكريم!':'أتممت السورة';
-  const sub=isFullKhatma?`اللهم اجعلها في ميزان حسناتك — الختمة رقم ${khatmaCount+1}`
-    :DONE_MSGS[Math.floor(Math.random()*DONE_MSGS.length)];
-  document.getElementById('done-title').textContent=title;
-  document.getElementById('done-sub').textContent=sub;
-  document.getElementById('done-overlay').classList.add('show');
-  showConfetti();
-}
-function closeDone(){
-  document.getElementById('done-overlay').classList.remove('show');
-}
-
-// ══════════════════════════════════
-// Picker
-// ══════════════════════════════════
 function togglePicker(){
   pickerOpen=!pickerOpen;
   document.getElementById('picker-dropdown').style.display=pickerOpen?'block':'none';
@@ -759,10 +568,7 @@ function buildPicker(){renderPickerItems(surahList);}
 function renderPickerItems(list){
   document.getElementById('picker-list').innerHTML=list.map(s=>{
     const i=surahList.indexOf(s);
-    const bm=bookmarks.find(b=>b.surahIdx===i)?'bookmarked':'';
-    return`<div class="picker-item ${i===currentSurahIdx?'active':''} ${bm}" onclick="loadSurah(${i});togglePicker()">
-      <span class="picker-num">${s.number}</span><span>${s.name}</span>
-      <span class="picker-meta">${s.numberOfAyahs} آية</span></div>`;
+    return`<div class="picker-item${i===currentSurahIdx?' active':''}" onclick="loadSurah(${i});togglePicker()"><span class="picker-num">${s.number}</span><span>${s.name}</span><span class="picker-meta">${s.numberOfAyahs} آية</span></div>`;
   }).join('');
 }
 function filterSurahs(){
@@ -771,9 +577,6 @@ function filterSurahs(){
   renderPickerItems(surahList.filter(s=>s.name.includes(q)||s.englishName.toLowerCase().includes(q.toLowerCase())||s.number.toString()===q));
 }
 
-// ══════════════════════════════════
-// Juz
-// ══════════════════════════════════
 function buildJuzGrid(){
   document.getElementById('juz-grid').innerHTML=JUZ_STARTS.map((_,i)=>`<button class="juz-btn" onclick="loadJuz(${i})">${i+1}</button>`).join('');
 }
@@ -784,61 +587,6 @@ async function loadJuz(ji){
   document.querySelectorAll('.juz-btn').forEach((b,i)=>b.className='juz-btn'+(i===ji?' active':''));
 }
 
-// ══════════════════════════════════
-// Bookmarks
-// ══════════════════════════════════
-function addBookmark(){
-  if(!wordList.length)return;
-  const e=wordList[wordIdx];
-  const s=surahList[currentSurahIdx];
-  const bm={surahIdx:currentSurahIdx,wordIdx,surahName:s.name,ayahNumber:e.isBismillah?0:e.ayahNumber,label:`سورة ${s.name} — آية ${e.isBismillah?'البسملة':e.ayahNumber}`};
-  bookmarks=bookmarks.filter(b=>!(b.surahIdx===bm.surahIdx&&b.ayahNumber===bm.ayahNumber));
-  bookmarks.unshift(bm);
-  if(bookmarks.length>10)bookmarks.pop();
-  buildBookmarksList();showToast('✅ تم حفظ العلامة المرجعية');save();
-}
-function buildBookmarksList(){
-  const el=document.getElementById('bookmarks-list');
-  if(!bookmarks.length){el.innerHTML='<div class="no-bookmarks">لا توجد علامات مرجعية بعد</div>';return;}
-  el.innerHTML=bookmarks.map((b,i)=>`
-    <div class="bookmark-item" onclick="gotoBookmark(${i})">
-      <span>📌 ${b.label}</span>
-      <span class="bookmark-del" onclick="event.stopPropagation();delBookmark(${i})">✕</span>
-    </div>`).join('');
-}
-async function gotoBookmark(i){
-  const b=bookmarks[i];
-  if(b.surahIdx!==currentSurahIdx)await loadSurah(b.surahIdx,b.wordIdx);
-  else{wordIdx=b.wordIdx;updateUI();}
-  switchTab('surah',document.querySelector('.tab'));
-  showToast('📌 تم الانتقال إلى العلامة');
-}
-function delBookmark(i){bookmarks.splice(i,1);buildBookmarksList();save();showToast('تم حذف العلامة');}
-
-// ══════════════════════════════════
-// Copy / Share
-// ══════════════════════════════════
-function getCurrentAyahText(){
-  if(!wordList.length)return'';
-  const e=wordList[wordIdx];
-  if(e.isBismillah)return'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
-  return e.ayahText||e.word;
-}
-function copyAyah(){
-  const txt=getCurrentAyahText();
-  navigator.clipboard.writeText(txt).then(()=>showToast('✅ تم نسخ الآية')).catch(()=>showToast('⚠️ فشل النسخ'));
-}
-function shareAyah(){
-  const e=wordList[wordIdx];
-  const s=surahList[currentSurahIdx];
-  const txt=`${getCurrentAyahText()}\n\n— سورة ${s.name}، الآية ${e.isBismillah?1:e.ayahNumber}`;
-  if(navigator.share){navigator.share({text:txt}).catch(()=>{});}
-  else{navigator.clipboard.writeText(txt).then(()=>showToast('✅ تم نسخ الآية للمشاركة'));}
-}
-
-// ══════════════════════════════════
-// Tab
-// ══════════════════════════════════
 function switchTab(tab,btn){
   ['surah','juz','bookmarks'].forEach(t=>{
     const el=document.getElementById('tab-'+t);
@@ -849,18 +597,54 @@ function switchTab(tab,btn){
   if(tab==='bookmarks')buildBookmarksList();
 }
 
-// ══════════════════════════════════
-// Playback
-// ══════════════════════════════════
+function addBookmark(){
+  if(!wordList.length)return;
+  const e=wordList[wordIdx];
+  const s=surahList[currentSurahIdx];
+  const bm={surahIdx:currentSurahIdx,wordIdx,surahName:s.name,ayahNumber:e.isBismillah?0:e.ayahNumber,label:`سورة ${s.name} — آية ${e.isBismillah?'البسملة':e.ayahNumber}`};
+  bookmarks=bookmarks.filter(b=>!(b.surahIdx===bm.surahIdx&&b.ayahNumber===bm.ayahNumber));
+  bookmarks.unshift(bm);if(bookmarks.length>10)bookmarks.pop();
+  buildBookmarksList();showToast('✅ تم حفظ العلامة');save();
+}
+function buildBookmarksList(){
+  const el=document.getElementById('bookmarks-list');
+  if(!bookmarks.length){el.innerHTML='<div class="no-bookmarks">لا توجد علامات مرجعية بعد</div>';return;}
+  el.innerHTML=bookmarks.map((b,i)=>`<div class="bookmark-item" onclick="gotoBookmark(${i})"><span>📌 ${b.label}</span><span class="bookmark-del" onclick="event.stopPropagation();delBookmark(${i})">✕</span></div>`).join('');
+}
+async function gotoBookmark(i){
+  const b=bookmarks[i];
+  if(b.surahIdx!==currentSurahIdx)await loadSurah(b.surahIdx,b.wordIdx);
+  else{wordIdx=b.wordIdx;updateUI();}
+  switchTab('surah',document.querySelector('.tab'));
+  showToast('📌 تم الانتقال للعلامة');
+}
+function delBookmark(i){bookmarks.splice(i,1);buildBookmarksList();save();}
+
+function getCurrentAyahText(){
+  if(!wordList.length)return'';
+  const e=wordList[wordIdx];
+  return e.isBismillah?'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ':e.ayahText||e.word;
+}
+function copyAyah(){
+  navigator.clipboard.writeText(getCurrentAyahText()).then(()=>showToast('✅ تم نسخ الآية')).catch(()=>showToast('⚠️ فشل النسخ'));
+}
+function shareAyah(){
+  const e=wordList[wordIdx];const s=surahList[currentSurahIdx];
+  const txt=`${getCurrentAyahText()}\n\n— سورة ${s.name}، الآية ${e.isBismillah?1:e.ayahNumber}`;
+  if(navigator.share){navigator.share({text:txt}).catch(()=>{});}
+  else{navigator.clipboard.writeText(txt).then(()=>showToast('✅ تم النسخ للمشاركة'));}
+}
+
 function startPlay(){
   playInterval=setInterval(()=>{
     if(wordIdx>=wordList.length-1){
       if(repeatEnabled&&currentRepeat<repeatCount){currentRepeat++;wordIdx=0;updateUI();return;}
       done=true;stopPlay();
       if(currentSurahIdx===surahList.length-1){khatmaCount++;wordsReadGlobal=0;}
-      showDone();updateUI();return;
+      updateUI();return;
     }
-    wordIdx++;wordsRead++;totalWords++;wordsReadGlobal=Math.min(QURAN_TOTAL_WORDS,wordsReadGlobal+1);
+    wordIdx++;wordsRead++;totalWords++;
+    wordsReadGlobal=Math.min(QURAN_TOTAL_WORDS,wordsReadGlobal+1);
     updateUI();
   },Math.round(60000/wpm));
   timerInterval=setInterval(()=>{elapsed++;totalElapsed++;updateUI();},1000);
@@ -875,31 +659,19 @@ function togglePlay(){
 function stepWord(d){if(loading)return;wordIdx=Math.max(0,Math.min(wordList.length-1,wordIdx+d));updateUI();}
 function stepAyah(d){
   if(loading||!wordList.length)return;
-  const cur=wordList[wordIdx];
-  const s=surahList[currentSurahIdx];
+  const cur=wordList[wordIdx];const s=surahList[currentSurahIdx];
   const target=Math.max(0,Math.min(s.numberOfAyahs-1,cur.ayahIdx+d));
   const i=wordList.findIndex(w=>w.ayahIdx===target);
   if(i>=0){wordIdx=i;updateUI();}
 }
 
-// ══════════════════════════════════
-// Speed / Font / Settings
-// ══════════════════════════════════
 function buildSpeedBtns(){
   document.getElementById('speed-btns').innerHTML=SPEEDS.map((s,i)=>`<button class="spd-btn${i===speedIdx?' active':''}" onclick="setSpeed(${i})">${s.label}</button>`).join('');
 }
 function setSpeed(i){speedIdx=i;wpm=SPEEDS[i].wpm;document.getElementById('wpm-display').textContent=wpm;buildSpeedBtns();if(playing){stopPlay();startPlay();}updateUI();}
 function adjustWpm(d){wpm=Math.max(50,Math.min(600,wpm+d));document.getElementById('wpm-display').textContent=wpm;if(playing){stopPlay();startPlay();}updateUI();}
-function adjFont(d){
-  fontSize=Math.max(32,Math.min(96,fontSize+d));
-  document.getElementById('font-val').textContent=fontSize;
-  renderWord();save();
-}
-function toggleFocus(){
-  focusEnabled=!focusEnabled;
-  document.getElementById('focus-toggle').className='toggle '+(focusEnabled?'on':'off');
-  renderWord();
-}
+function adjFont(d){fontSize=Math.max(32,Math.min(96,fontSize+d));document.getElementById('font-val').textContent=fontSize;renderWord();save();}
+function toggleFocus(){focusEnabled=!focusEnabled;document.getElementById('focus-toggle').className='toggle '+(focusEnabled?'on':'off');renderWord();}
 function toggleRepeat(){
   repeatEnabled=!repeatEnabled;
   document.getElementById('repeat-toggle').className='toggle '+(repeatEnabled?'on':'off');
@@ -908,22 +680,14 @@ function toggleRepeat(){
 }
 function adjRepeat(d){repeatCount=Math.max(1,Math.min(20,repeatCount+d));document.getElementById('repeat-val').textContent=repeatCount;}
 
-// ══════════════════════════════════
-// Swipe
-// ══════════════════════════════════
 const swipeEl=document.getElementById('swipe-stage');
 swipeEl.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY;},{passive:true});
 swipeEl.addEventListener('touchend',e=>{
   const dx=e.changedTouches[0].clientX-touchStartX;
   const dy=e.changedTouches[0].clientY-touchStartY;
-  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){
-    dx>0?stepWord(-1):stepWord(1);
-  }
+  if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){dx>0?stepWord(-1):stepWord(1);}
 },{passive:true});
 
-// ══════════════════════════════════
-// Keyboard
-// ══════════════════════════════════
 document.addEventListener('keydown',e=>{
   if(e.target.tagName==='INPUT')return;
   if(e.code==='Space'){e.preventDefault();togglePlay();}
@@ -935,29 +699,20 @@ document.addEventListener('keydown',e=>{
   else if(e.code==='KeyB')addBookmark();
 });
 
-// close picker on outside click
 document.addEventListener('click',e=>{
   const pw=document.querySelector('.picker-wrap');
   if(pickerOpen&&pw&&!pw.contains(e.target))togglePicker();
 });
 
-// re-acquire wake lock on visibility change
 document.addEventListener('visibilitychange',async()=>{
   if(wakeLockActive&&document.visibilityState==='visible'){
     try{wakeLock=await navigator.wakeLock.request('screen');}catch(e){}
   }
 });
 
-// ══════════════════════════════════
-// Init
-// ══════════════════════════════════
 buildSpeedBtns();
 initSplash();
 fetchSurahList();
 </script>
 </body>
-</html>
-    
-  </body>
-  
 </html>
